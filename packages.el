@@ -50,11 +50,5 @@
 ;(unpin! t)
 
 
-
-
+;; my custom packages
 (package! key-chord)
-;; (package! yasnippet)
-(package! lsp-bridge 
-  :recipe (:host github :repo "manateelazycat/lsp-bridge"))
-
-;; (package! company :disable t)
