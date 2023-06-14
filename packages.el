@@ -52,3 +52,4 @@
 
 ;; my custom packages
 (package! key-chord)
+(package! fzf)
