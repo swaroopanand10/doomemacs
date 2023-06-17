@@ -53,3 +53,14 @@
 ;; my custom packages
 (package! key-chord)
 (package! fzf)
+;; (package! corfu)
+;; (package! kind-icon)
+;; (package! company :disable t)
+;; (package! vertico :disable t)
+
+(when (featurep! +orderless)
+  (package! orderless))
+
+(package! company-quickhelp)
+(package! pos-tip)
+(package! lsp-ui)

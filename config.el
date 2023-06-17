@@ -84,8 +84,11 @@
 ;;custom keybindings
 
 ;;Exit insert mode by pressing k and then j quickly
-(setq key-chord-two-keys-delay 0.5)
-(key-chord-define evil-insert-state-map "kj" 'evil-normal-state) ;; this is added by me
+
+(setq evil-escape-key-sequence nil)
+;; (setq key-chord-two-keys-delay 0.1)
+;; (key-chord-define evil-insert-state-map "kj" 'evil-normal-state) ;; this is added by me
+;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state) ;; this is added by me
 (key-chord-mode 1)
 
 ;; (map! :leader 
@@ -114,9 +117,10 @@
 (define-key evil-normal-state-map (kbd "H") 'previous-buffer)
 
 ;; lsp related
-(define-key evil-normal-state-map (kbd "K") 'lsp-ui-doc-show)
-(define-key evil-normal-state-map (kbd "J") 'lsp-ui-doc-hide)
-;; (define-key evil-normal-state-map (kbd "C-n") 'lsp-ui-doc-frame-focus)
+;; (define-key evil-normal-state-map (kbd "K") 'lsp-ui-doc-show)
+;; (define-key evil-normal-state-map (kbd "J") 'lsp-ui-doc-hide)
+
+(define-key evil-normal-state-map (kbd "J") 'lsp-ui-imenu)
 
 ;; these keybindings are overriding some default keybindings and not working
 ;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-increase-height)
@@ -124,6 +128,39 @@
 ;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-increase-width)
 ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-decrease-width)
 
+(defun my-jk ()
+  (interactive)
+  (let* ((initial-key ?j)
+         (final-key ?k)
+         (timeout 0.5)
+         (event (read-event nil nil timeout)))
+    (if event
+        ;; timeout met
+        (if (and (characterp event) (= event final-key))
+            (evil-normal-state)
+          (insert initial-key)
+          (push event unread-command-events))
+      ;; timeout exceeded
+      (insert initial-key))))
+
+(define-key evil-insert-state-map (kbd "j") 'my-jk)
+
+(defun my-kj ()
+  (interactive)
+  (let* ((initial-key ?k)
+         (final-key ?j)
+         (timeout 0.5)
+         (event (read-event nil nil timeout)))
+    (if event
+        ;; timeout met
+        (if (and (characterp event) (= event final-key))
+            (evil-normal-state)
+          (insert initial-key)
+          (push event unread-command-events))
+      ;; timeout exceeded
+      (insert initial-key))))
+
+(define-key evil-insert-state-map (kbd "k") 'my-kj)
 
 ;; tree-sitter
 (use-package tree-sitter
@@ -136,11 +173,62 @@
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs
-  :ensure t
   :after tree-sitter)
 
-;; ido mode
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+;; always keep minimap-mode on
+;; (minimap-mode t)
+
+
+;; company settings
+(setq company-idle-delay 0
+      company-tooltip-idle-delay 0
+      company-tooltip-maximum-width 80
+      company-minimum-prefix-length 2
+      company-require-match nil
+      company-tooltip-align-annotations t
+      company-tooltip-flip-when-above t
+      company-frontends
+      '(company-pseudo-tooltip-frontend
+        company-preview-frontend
+        company-echo-metadata-frontend))
+
+;; (company-quickhelp-mode)
+;; (setq company-quickhelp-delay 0)
+
+;; (use-package lsp-ui
+;;   :custom
+;;   (lsp-ui-sideline-enable)
+;;   (lsp-ui-doc-enable)
+;;   (lsp-ui-doc-position 'bottom-and-right)
+;;   :commands lsp-ui-mode)
+
+ (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode)
+    :custom
+    (lsp-ui-doc-position 'bottom))
+
+;; (setq lsp-ui-sideline-show-diagnostics t
+;;       ;; lsp-ui-sideline-show-hover t
+;;       ;; lsp-ui-sideline-update-mode t
+;;       ;; lsp-ui-sideline-delay 0
+;;       lsp-ui-doc-enable t
+;;       lsp-ui-doc-position 'bottom
+;;       lsp-ui-doc-delay 0)
+
+;; (tab-bar-mode)
+;; never ask for closing emacs
+(setq confirm-kill-emacs nil)
+
+
+(defun my/company-show-doc-buffer ()
+  "Temporarily show the documentation buffer for the selection."
+  (interactive)
+  (let* ((selected (nth company-selection company-candidates))
+         (doc-buffer (or (company-call-backend 'doc-buffer selected)
+                         (error "No documentation available"))))
+    (with-current-buffer doc-buffer
+      (goto-char (point-min)))
+    (display-buffer doc-buffer t)))
+;; it will open the doc buffer permenantly and we have to close it manually
+(define-key evil-insert-state-map (kbd "C-<f1>") #'my/company-show-doc-buffer)
 
