@@ -57,10 +57,11 @@
 ;; (package! kind-icon)
 ;; (package! company :disable t)
 ;; (package! vertico :disable t)
+;; (package! ivy :disable t)
 
-(when (featurep! +orderless)
-  (package! orderless))
+;; (when (featurep! +orderless)
+;;   (package! orderless))
 
-(package! company-quickhelp)
-(package! pos-tip)
-(package! lsp-ui)
+;; (package! company-quickhelp)
+;; (package! pos-tip)
+;; (package! lsp-ui)

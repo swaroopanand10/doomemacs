@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-tokyo-night)
+(setq doom-theme 'doom-moonlight)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -84,7 +84,6 @@
 ;;custom keybindings
 
 ;;Exit insert mode by pressing k and then j quickly
-
 (setq evil-escape-key-sequence nil)
 ;; (setq key-chord-two-keys-delay 0.1)
 ;; (key-chord-define evil-insert-state-map "kj" 'evil-normal-state) ;; this is added by me
@@ -116,10 +115,6 @@
 (define-key evil-normal-state-map (kbd "L") 'next-buffer)
 (define-key evil-normal-state-map (kbd "H") 'previous-buffer)
 
-;; lsp related
-;; (define-key evil-normal-state-map (kbd "K") 'lsp-ui-doc-show)
-;; (define-key evil-normal-state-map (kbd "J") 'lsp-ui-doc-hide)
-
 (define-key evil-normal-state-map (kbd "J") 'lsp-ui-imenu)
 
 ;; these keybindings are overriding some default keybindings and not working
@@ -132,7 +127,7 @@
   (interactive)
   (let* ((initial-key ?j)
          (final-key ?k)
-         (timeout 0.5)
+         (timeout 0.1)
          (event (read-event nil nil timeout)))
     (if event
         ;; timeout met
@@ -149,7 +144,7 @@
   (interactive)
   (let* ((initial-key ?k)
          (final-key ?j)
-         (timeout 0.5)
+         (timeout 0.1)
          (event (read-event nil nil timeout)))
     (if event
         ;; timeout met
@@ -162,31 +157,19 @@
 
 (define-key evil-insert-state-map (kbd "k") 'my-kj)
 
-;; tree-sitter
-(use-package tree-sitter
-  :ensure t
-  :config
-  ;; activate tree-sitter on any buffer containing code for which it has a parser available
-  (global-tree-sitter-mode)
-  ;; you can easily see the difference tree-sitter-hl-mode makes for python, ts or tsx
-  ;; by switching on and off
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-
-(use-package tree-sitter-langs
-  :after tree-sitter)
 
 ;; always keep minimap-mode on
 ;; (minimap-mode t)
 
 
 ;; company settings
-(setq company-idle-delay 0
-      company-tooltip-idle-delay 0
-      company-tooltip-maximum-width 80
-      company-minimum-prefix-length 2
-      company-require-match nil
-      company-tooltip-align-annotations t
-      company-tooltip-flip-when-above t
+(setq company-idle-delay 0.1
+      ;; company-tooltip-idle-delay 0
+      ;; company-tooltip-maximum-width 80
+      company-minimum-prefix-length 1
+      ;; company-require-match nil
+      ;; company-tooltip-align-annotations t
+      ;; company-tooltip-flip-when-above t
       company-frontends
       '(company-pseudo-tooltip-frontend
         company-preview-frontend
@@ -195,30 +178,37 @@
 ;; (company-quickhelp-mode)
 ;; (setq company-quickhelp-delay 0)
 
-;; (use-package lsp-ui
-;;   :custom
-;;   (lsp-ui-sideline-enable)
-;;   (lsp-ui-doc-enable)
-;;   (lsp-ui-doc-position 'bottom-and-right)
-;;   :commands lsp-ui-mode)
+;; (use-package lsp-ui)
+;;   (setq lsp-ui-doc-enable t)
+;;   ;; (setq lsp-ui-doc-show-with-cursor t)
+;;   (setq lsp-ui-doc-show-with-mouse t)
 
- (use-package lsp-ui
-    :hook (lsp-mode . lsp-ui-mode)
-    :custom
-    (lsp-ui-doc-position 'bottom))
+(after! lsp-ui
+        (setq lsp-ui-doc-enable t)
+        (setq lsp-ui-doc-show-with-mouse t)
+       (setq lsp-ui-doc-max-height 100)
+        (setq lsp-ui-doc-max-width 200))
+
+;; (after! lsp-mode
+;; (add-hook 'after-init-hook 'company-tng-mode)) ;; it was activated properly but then the snippets were not working
+
 
 ;; (setq lsp-ui-sideline-show-diagnostics t
 ;;       ;; lsp-ui-sideline-show-hover t
 ;;       ;; lsp-ui-sideline-update-mode t
 ;;       ;; lsp-ui-sideline-delay 0
 ;;       lsp-ui-doc-enable t
-;;       lsp-ui-doc-position 'bottom
-;;       lsp-ui-doc-delay 0)
+;;       lsp-ui-doc-position 'bottom)
 
-;; (tab-bar-mode)
+;; if want to disable auto-completion
+;; (after! company
+;;   (setq company-idle-delay nil))
+
 ;; never ask for closing emacs
 (setq confirm-kill-emacs nil)
 
+;; to avoid the which key being covered by status line
+(setq which-key-allow-imprecise-window-fit nil)
 
 (defun my/company-show-doc-buffer ()
   "Temporarily show the documentation buffer for the selection."
@@ -229,6 +219,97 @@
     (with-current-buffer doc-buffer
       (goto-char (point-min)))
     (display-buffer doc-buffer t)))
+
 ;; it will open the doc buffer permenantly and we have to close it manually
-(define-key evil-insert-state-map (kbd "C-<f1>") #'my/company-show-doc-buffer)
+;; (define-key evil-insert-state-map (kbd "C-o") #'my/company-show-doc-buffer)
+;; (define-key evil-insert-state-map (kbd "C-o") evil-emacs-state)
+
+
+;; setting compnay backends
+;; (after! prog (set-company-backend! 'prog-mode 'company-capf 'company-yasnippet 'company-files 'company-dabbrev))
+;; (after! text (set-company-backend! 'text-mode 'company-files 'company-dabbrev))
+;; (after! eshell (set-company-backend! 'text-mode 'company-files 'company-dabbrev))
+;; (after! conf (set-company-backend! 'conf-mode 'company-capf 'company-files 'company-dabbrev 'company-yasnippet))
+;; (after! c++ (set-company-backend! 'c++-mode 'company-capf 'company-files 'company-dabbrev 'company-yasnippet))
+
+;; (after! text
+;;   (set-company-backend! 'text-mode
+;;     '(company-files company-dabbrev))
+
+  ;; (set-company-backend! 'text-mode
+  ;;   'company-capf 'company-files 'company-dabbrev 'company-yasnippet)
+
+  ;; (set-company-backend! 'fundamental-mode
+  ;;   'company-capf 'company-files 'company-dabbrev 'company-yasnippet)
+
+  ;; (set-company-backend! 'conf-mode
+  ;;    'company-capf 'company-dabbrev 'company-files 'company-yasnippet)
+
+  ;; (set-company-backend! 'prog-mode
+  ;;    'company-capf 'company-yasnippet 'company-dabbrev 'company-files)
+
+  ;; (set-company-backend! '(c-mode c++-mode rjsx-mode python-mode rust-mode)
+  ;;    'company-capf 'company-yasnippet 'company-dabbrev 'company-files)
+;; (setq-hook! 'text-mode-hook +lsp-company-backends '(company-capf company-dabbrev company-dabbrev-code company-files company-yasnippet))
+;; (setq-hook! 'conf-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
+;; (setq-hook! 'prog-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
+
+;; (setq-hook! 'c++-mode-hook +lsp-company-backends '(:seperate company-capf company-yasnippet company-dabbrev company-dabbrev-code )) ;; messing with the snippet order
+;; (setq-hook! 'c-mode-hook +lsp-company-backends '(company-yasnippet company-capf company-dabbrev company-dabbrev-code company-files))
+;; (setq-hook! 'rjsx-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
+;; (setq-hook! 'rustic-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
+
+(global-set-key (kbd "M-o") 'dabbrev-completion) ;; this is better as it gives choice
+(define-key evil-insert-state-map (kbd "M-N") #'completion-at-point) 
+(define-key evil-insert-state-map (kbd "M-n") #'company-capf)
+(define-key evil-insert-state-map (kbd "M-/") #'company-dabbrev)
+
+;; (add-hook 'vterm-mode-hook (lambda () (setq evil-default-state 'emacs)))
+;; (after! company-mode
+;; (define-key company-active-map (kbd "<tab>") #'company-complete))
+;; (define-key company-active-map (kbd "Retn") 'nill)
+
+;; trying to fix vterm this currently works fine
+(add-hook 'vterm-mode-hook 'evil-emacs-state)
+;; (add-to-list 'evil-emacs-state-modes 'vterm-mode) ;; this also works fine but one time it was not
+
+(after! vterm
+(define-key vterm-mode-map (kbd "M-k") 'evil-window-up)
+(define-key vterm-mode-map (kbd "M-j") 'evil-window-down)
+(define-key vterm-mode-map (kbd "M-l") 'evil-window-right)
+(define-key vterm-mode-map (kbd "M-h") 'evil-window-left)
+(define-key vterm-mode-map (kbd "L") 'next-buffer)
+(define-key vterm-mode-map (kbd "H") 'previous-buffer))
+
+;; (define-key vterm-mode-map (kbd "C-j") 'evil-window-down)
+;; (define-key vterm-mode-map (kbd "M-p") 'vterm-send-M-p)
+;; (define-key vterm-mode-map (kbd "M-n") 'vterm-send-M-n)
+
+
+(setq projectile-project-search-path '("~/prg/"))
+
+
+(define-key evil-insert-state-map (kbd "M-k") 'evil-window-up)
+(define-key evil-insert-state-map (kbd "M-j") 'evil-window-down)
+(define-key evil-insert-state-map (kbd "M-l") 'evil-window-right)
+(define-key evil-insert-state-map (kbd "M-h") 'evil-window-left)
+
+;; (defun jpk/eshell-mode-hook ()
+;;   (company-mode -1))
+;; (add-hook 'eshell-mode-hook #'jpk/eshell-mode-hook)
+
+;; (after! eshell
+  ;; (setq company-mode nil))
+
+;; these 2 fucntions works perfectly fine
+(defun jpk/company-idle-delay-nil-eshell ()
+  (when (eq major-mode 'eshell-mode)
+    (setq-local company-idle-delay nil)))
+
+(add-hook 'eshell-mode-hook #'jpk/company-idle-delay-nil-eshell )
+
+(defun jpk/company-idle-delay-nil-org ()
+  (when (eq major-mode 'org-mode)
+    (setq-local company-idle-delay nil)))
+(add-hook 'org-mode-hook #'jpk/company-idle-delay-nil-org )
 
