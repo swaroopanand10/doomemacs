@@ -1,0 +1,38 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "main" nil
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 48)
+       (min-height-ignore . 3)
+       (min-width-ignore . 48)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 528)
+       (min-pixel-height-ignore . 69)
+       (min-pixel-width-ignore . 528)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1894)
+      (pixel-height . 990)
+      (total-width . 172)
+      (total-height . 43)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct))
+      (buffer "*doom*"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 0 0 nil nil)
+              (margins 46)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 1540)
+              (start . 1))
+      (prev-buffers
+       ("*scratch*" 1 1))))
+   (def-params nil)
+   nil nil nil))

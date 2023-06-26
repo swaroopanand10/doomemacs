@@ -382,65 +382,18 @@
 
 
 
-        ;; (setq auto-revert-use-notify t)
-        ;; (setq global-auto-revert-mode t)
+        (setq auto-revert-use-notify t)
+        (setq global-auto-revert-mode t)
 
-;; (use-package! autorevert
-;;   ;; revert buffers when their files/state have changed
-;;   :hook (focus-in . doom-auto-revert-buffers-h)
-;;   :hook (after-save . doom-auto-revert-buffers-h)
-;;   :hook (doom-switch-buffer . doom-auto-revert-buffer-h)
-;;   :hook (doom-switch-window . doom-auto-revert-buffer-h)
-;;   :config
-;;   (setq auto-revert-verbose t ; let us know when it happens
-;;         ;; auto-revert-use-notify nil
-;;         auto-revert-use-notify t
-;;         auto-revert-stop-on-user-input nil
-;;         ;; Only prompts for confirmation when buffer is unsaved.
-;;         revert-without-query (list ".")))
-
-(after! autorevert
-      (setq auto-revert-use-notify t)
-      (setq auto-revert-verbose t))
-(global-auto-revert-mode) ;; running it as a function otherwise it does not work
-
-
- ;; Run C/c++/python/js programs directly from within emacs
+ ;; Run C programs directly from within emacs
 (defun execute-c-program ()
   (interactive)
   (defvar foo)
   ;; (setq foo (concat "gcc " (buffer-file-name)" < "(file-name-directory buffer-file-name)"/in.txt >"(file-name-directory buffer-file-name)"/out.txt && ./a.out" ))
-  (setq foo (concat (save-buffer buffer-file-name) "gcc " (buffer-file-name)" &> ./out.txt&& ./a.out < ./in.txt &> ./out.txt" ))
+  (setq foo (concat (save-buffer buffer-file-name) "gcc " (buffer-file-name)" && ./a.out < ./in.txt > ./out.txt" (save-buffer (file-name-directory buffer-file-name"/out.txt")) ))
   (shell-command foo))
 
 (add-hook 'c-mode-hook '(lambda () 
                               (local-set-key (kbd "<f9>") 'execute-c-program)))
 
 
-(defun execute-cpp-program ()
-  (interactive)
-  (defvar foo)
-  (setq foo (concat (save-buffer buffer-file-name) "g++ " (buffer-file-name)" &> ./out.txt && ./a.out < ./in.txt &> ./out.txt" ))
-  (shell-command foo))
-
-(add-hook 'c++-mode-hook '(lambda () 
-                              (local-set-key (kbd "<f9>") 'execute-cpp-program)))
-
-(defun execute-node-program ()
-  (interactive)
-  (defvar foo)
-  (setq foo (concat (save-buffer buffer-file-name) "node " (buffer-file-name)" &> ./out.txt" ))
-  (shell-command foo))
-
-(add-hook 'rjsx-mode-hook '(lambda () 
-                              (local-set-key (kbd "<f9>") 'execute-node-program)))
-
-
-(defun execute-python-program ()
-  (interactive)
-  (defvar foo)
-  (setq foo (concat (save-buffer buffer-file-name) "python " (buffer-file-name)" < ./in.txt &> ./out.txt" ))
-  (shell-command foo))
-
-(add-hook 'python-mode-hook '(lambda () 
-                              (local-set-key (kbd "<f9>") 'execute-python-program)))

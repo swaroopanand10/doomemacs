@@ -65,3 +65,5 @@
 ;; (package! company-quickhelp)
 ;; (package! pos-tip)
 ;; (package! lsp-ui)
+(package! peep-dired)
+(package! imenu-list)

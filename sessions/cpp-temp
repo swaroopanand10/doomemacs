@@ -1,0 +1,116 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "cpp"
+   ((def-buffer "out.txt" "/home/swaroop/prg/cf/out.txt" text-mode)
+    (def-buffer "in.txt" "/home/swaroop/prg/cf/in.txt" text-mode)
+    (def-buffer "cpp.cpp" "/home/swaroop/prg/cf/cpp.cpp" c++-mode))
+   (def-wconf
+     (((min-height . 8)
+       (min-width . 20)
+       (min-height-ignore . 6)
+       (min-width-ignore . 8)
+       (min-height-safe . 2)
+       (min-width-safe . 4)
+       (min-pixel-height . 184)
+       (min-pixel-width . 220)
+       (min-pixel-height-ignore . 138)
+       (min-pixel-width-ignore . 88)
+       (min-pixel-height-safe . 46)
+       (min-pixel-width-safe . 44))
+      hc
+      (pixel-width . 1920)
+      (pixel-height . 1057)
+      (total-width . 175)
+      (total-height . 46)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (combination-limit)
+      (leaf
+       (pixel-width . 958)
+       (pixel-height . 1057)
+       (total-width . 87)
+       (total-height . 46)
+       (normal-height . 1.0)
+       (normal-width . 0.5)
+       (parameters
+        (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                   (0 1 .
+                                      [("/home/swaroop/prg/cf/cpp.cpp" 1 "f4yuqy")
+                                       nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                   -1)))
+       (buffer "cpp.cpp"
+               (selected . t)
+               (hscroll . 0)
+               (fringes 8 8 t nil)
+               (margins nil)
+               (scroll-bars nil 0 t nil 0 t nil)
+               (vscroll . 0)
+               (dedicated)
+               (point . 213)
+               (start . 1))
+       (prev-buffers
+        ("*doom*" 1 1540)
+        ("*scratch*" 1 1)))
+      (vc
+       (last . t)
+       (pixel-width . 962)
+       (pixel-height . 1057)
+       (total-width . 88)
+       (total-height . 46)
+       (normal-height . 1.0)
+       (normal-width . 0.5)
+       (combination-limit)
+       (leaf
+        (pixel-width . 962)
+        (pixel-height . 518)
+        (total-width . 88)
+        (total-height . 23)
+        (normal-height . 0.5)
+        (normal-width . 1.0)
+        (parameters
+         (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                    (0 2 .
+                                       [("/home/swaroop/prg/cf/cpp.cpp" 1 "f4yuqy")
+                                        ("/home/swaroop/prg/cf/in.txt" 1 "0se1z7")
+                                        nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                    -1)))
+        (buffer "in.txt"
+                (selected)
+                (hscroll . 0)
+                (fringes 8 8 t nil)
+                (margins nil)
+                (scroll-bars nil 0 t nil 0 t nil)
+                (vscroll . 0)
+                (dedicated)
+                (point . 7)
+                (start . 1))
+        (prev-buffers
+         ("cpp.cpp" 1 210)))
+       (leaf
+        (last . t)
+        (pixel-width . 962)
+        (pixel-height . 539)
+        (total-width . 88)
+        (total-height . 23)
+        (normal-height . 0.5)
+        (normal-width . 1.0)
+        (parameters
+         (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                    (0 2 .
+                                       [("/home/swaroop/prg/cf/cpp.cpp" 1 "f4yuqy")
+                                        ("/home/swaroop/prg/cf/out.txt" 1 "ze09e3")
+                                        nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                    -1)))
+        (buffer "out.txt"
+                (selected)
+                (hscroll . 0)
+                (fringes 8 8 t nil)
+                (margins nil)
+                (scroll-bars nil 0 t nil 0 t nil)
+                (vscroll . 0)
+                (dedicated)
+                (point . 1)
+                (start . 1))
+        (prev-buffers
+         ("cpp.cpp" 1 135))))))
+   (def-params nil)
+   nil nil nil))
