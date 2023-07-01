@@ -1,0 +1,334 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "hfc_restart"
+   ((def-buffer "categorize3.c" "/home/swaroop/Projects/hfc_restart/datastreams/categorize3.c" c-mode))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 10)
+       (min-height-ignore . 3)
+       (min-width-ignore . 4)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 110)
+       (min-pixel-height-ignore . 69)
+       (min-pixel-width-ignore . 44)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1920)
+      (pixel-height . 1034)
+      (total-width . 174)
+      (total-height . 44)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                  (0 1 .
+                                     [("/home/swaroop/Projects/hfc_restart/datastreams/categorize3.c" 48 "rzzox8")
+                                      nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                  -1)))
+      (buffer "categorize3.c"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 8 8 t nil)
+              (margins nil)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 1)
+              (start . 1))
+      (prev-buffers
+       ("*doom*" 1 721)
+       ("categorize3.c" 1 48))))
+   (def-params
+     ((tab-bar-tabs
+       (current-tab
+        (name . "categorize3.c")
+        (explicit-name)))
+      (tab-bar-closed-tabs)
+      (last-project-root . "/home/swaroop/Projects/hfc_restart/")))
+   nil nil nil)
+ (def-persp "javascript-exercises"
+   ((def-buffer "helloWorld.js" "/home/swaroop/Projects/others/javascript-exercises/01_helloWorld/helloWorld.js" rjsx-mode))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 10)
+       (min-height-ignore . 3)
+       (min-width-ignore . 4)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 110)
+       (min-pixel-height-ignore . 69)
+       (min-pixel-width-ignore . 44)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1920)
+      (pixel-height . 1034)
+      (total-width . 174)
+      (total-height . 44)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                  (0 1 .
+                                     [("/home/swaroop/Projects/others/javascript-exercises/01_helloWorld/helloWorld.js" 34 "grb7vv")
+                                      nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                  -1)))
+      (buffer "helloWorld.js"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 8 8 t nil)
+              (margins nil)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 92)
+              (start . 1))
+      (prev-buffers
+       ("*doom*" 1 1540)
+       ("helloWorld.js" 1 92)
+       ("categorize3.c" 1 48))))
+   (def-params
+     ((tab-bar-tabs
+       (current-tab
+        (name . "helloWorld.js")
+        (explicit-name)))
+      (tab-bar-closed-tabs)
+      (last-project-root . "/home/swaroop/Projects/others/javascript-exercises/")))
+   nil nil nil)
+ (def-persp "JavaScript30"
+   ((def-buffer "style.css" "/home/swaroop/Projects/others/JavaScript30/01 - JavaScript Drum Kit/style.css" css-mode)
+    (def-buffer "style.css<2>" "/home/swaroop/Projects/others/JavaScript30/27 - Click and Drag/style.css" css-mode))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 10)
+       (min-height-ignore . 3)
+       (min-width-ignore . 4)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 110)
+       (min-pixel-height-ignore . 69)
+       (min-pixel-width-ignore . 44)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1920)
+      (pixel-height . 1034)
+      (total-width . 174)
+      (total-height . 44)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                  (0 4 .
+                                     [("/home/swaroop/Projects/others/JavaScript30/01 - JavaScript Drum Kit/style.css" 302 "4vzduy")
+                                      ("/home/swaroop/Projects/others/JavaScript30/27 - Click and Drag/style.css" 1 "qd7jq5")
+                                      ("/home/swaroop/Projects/others/JavaScript30/01 - JavaScript Drum Kit/style.css" 529 "0o752t")
+                                      ("/home/swaroop/Projects/others/JavaScript30/27 - Click and Drag/style.css" 34 "nxr9u4")
+                                      nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                  -1)))
+      (buffer "style.css<2>"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 8 8 t nil)
+              (margins nil)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 34)
+              (start . 34))
+      (prev-buffers
+       ("*doom*" 1 1542)
+       ("style.css<2>" 34 34)
+       ("style.css" 8 529)
+       ("helloWorld.js" 1 92)
+       ("categorize3.c" 1 48))))
+   (def-params
+     ((tab-bar-tabs
+       (current-tab
+        (name . "style.css<2>")
+        (explicit-name)))
+      (tab-bar-closed-tabs)
+      (last-project-root . "/home/swaroop/Projects/others/JavaScript30/")))
+   nil nil nil)
+ (def-persp "css-exercises"
+   ((def-buffer "README.md" "/home/swaroop/Projects/others/css-exercises/animation/02-pop-up/README.md" gfm-mode))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 10)
+       (min-height-ignore . 3)
+       (min-width-ignore . 4)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 110)
+       (min-pixel-height-ignore . 69)
+       (min-pixel-width-ignore . 44)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1894)
+      (pixel-height . 967)
+      (total-width . 172)
+      (total-height . 42)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                  (0 1 .
+                                     [("/home/swaroop/Projects/others/css-exercises/animation/02-pop-up/README.md" 1 "il00gc")
+                                      nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                  -1)))
+      (buffer "README.md"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 8 8 t nil)
+              (margins nil)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 937)
+              (start . 1))
+      (prev-buffers
+       ("*doom*" 1 1542)
+       ("README.md" 1 937)
+       ("style.css<2>" 34 34)
+       ("style.css" 8 529)
+       ("helloWorld.js" 1 92)
+       ("categorize3.c" 1 48))))
+   (def-params
+     ((tab-bar-tabs
+       (current-tab
+        (name . "README.md")
+        (explicit-name)))
+      (tab-bar-closed-tabs)
+      (last-project-root . "/home/swaroop/Projects/others/css-exercises/")))
+   nil nil nil)
+ (def-persp "sample"
+   ((def-buffer "out.txt" "/home/swaroop/prg/dev/c/sample/out.txt" text-mode)
+    (def-buffer "in.txt" "/home/swaroop/prg/dev/c/sample/in.txt" text-mode)
+    (def-buffer "c.c" "/home/swaroop/prg/dev/c/sample/c.c" c-mode))
+   (def-wconf
+     (((min-height . 8)
+       (min-width . 20)
+       (min-height-ignore . 6)
+       (min-width-ignore . 8)
+       (min-height-safe . 2)
+       (min-width-safe . 4)
+       (min-pixel-height . 184)
+       (min-pixel-width . 220)
+       (min-pixel-height-ignore . 138)
+       (min-pixel-width-ignore . 88)
+       (min-pixel-height-safe . 46)
+       (min-pixel-width-safe . 44))
+      hc
+      (pixel-width . 1920)
+      (pixel-height . 1034)
+      (total-width . 175)
+      (total-height . 45)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (combination-limit)
+      (leaf
+       (pixel-width . 1323)
+       (pixel-height . 1034)
+       (total-width . 120)
+       (total-height . 45)
+       (normal-height . 1.0)
+       (normal-width . 0.6890625000000002)
+       (parameters
+        (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                   (0 1 .
+                                      [("/home/swaroop/prg/dev/c/sample/c.c" 954 "j1mo0f")
+                                       nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                   -1)))
+       (buffer "c.c"
+               (selected . t)
+               (hscroll . 0)
+               (fringes 8 8 t nil)
+               (margins nil)
+               (scroll-bars nil 0 t nil 0 t nil)
+               (vscroll . 0)
+               (dedicated)
+               (point . 141)
+               (start . 1))
+       (prev-buffers
+        ("*doom*" 1 1539)
+        ("README.md" 1 937)
+        ("style.css<2>" 34 34)
+        ("style.css" 8 529)
+        ("helloWorld.js" 1 92)
+        ("categorize3.c" 1 48)))
+      (vc
+       (last . t)
+       (pixel-width . 597)
+       (pixel-height . 1034)
+       (total-width . 55)
+       (total-height . 45)
+       (normal-height . 1.0)
+       (normal-width . 0.31093749999999976)
+       (combination-limit)
+       (leaf
+        (pixel-width . 597)
+        (pixel-height . 517)
+        (total-width . 55)
+        (total-height . 22)
+        (normal-height . 0.5)
+        (normal-width . 1.0)
+        (parameters
+         (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                    (0 2 .
+                                       [("/home/swaroop/prg/dev/c/sample/c.c" 954 "j1mo0f")
+                                        ("/home/swaroop/prg/dev/c/sample/in.txt" 7 "ky67xq")
+                                        nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                    -1)))
+        (buffer "in.txt"
+                (selected)
+                (hscroll . 0)
+                (fringes 8 8 t nil)
+                (margins nil)
+                (scroll-bars nil 0 t nil 0 t nil)
+                (vscroll . 0)
+                (dedicated)
+                (point . 7)
+                (start . 1))
+        (prev-buffers
+         ("c.c" 1 46)))
+       (leaf
+        (last . t)
+        (pixel-width . 597)
+        (pixel-height . 517)
+        (total-width . 55)
+        (total-height . 23)
+        (normal-height . 0.5)
+        (normal-width . 1.0)
+        (parameters
+         (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                    (0 2 .
+                                       [("/home/swaroop/prg/dev/c/sample/c.c" 954 "j1mo0f")
+                                        ("/home/swaroop/prg/dev/c/sample/out.txt" 1 "2xtfjg")
+                                        nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                    -1)))
+        (buffer "out.txt"
+                (selected)
+                (hscroll . 0)
+                (fringes 8 8 t nil)
+                (margins nil)
+                (scroll-bars nil 0 t nil 0 t nil)
+                (vscroll . 0)
+                (dedicated)
+                (point . 1)
+                (start . 1))
+        (prev-buffers
+         ("c.c" 46 46))))))
+   (def-params
+     ((tab-bar-tabs
+       (current-tab
+        (name . "c.c")
+        (explicit-name)))
+      (tab-bar-closed-tabs)
+      (last-project-root . "/home/swaroop/prg/dev/c/sample/")))
+   nil nil nil))

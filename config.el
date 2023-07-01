@@ -32,7 +32,9 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-moonlight)
+;; (setq doom-theme 'doom-homage-black)
+;; (setq doom-theme 'doom-moonlight)
+(setq doom-theme 'moonlightc)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -106,11 +108,17 @@
 (global-set-key (kbd "C-S-l") 'evil-window-increase-width)
 (global-set-key (kbd "C-S-h") 'evil-window-decrease-width)
 
-(global-set-key (kbd "M-H") '+evil/window-move-left)
-(global-set-key (kbd "M-L") '+evil/window-move-right)
-(global-set-key (kbd "M-K") '+evil/window-move-up)
-(global-set-key (kbd "M-J") '+evil/window-move-down)
-
+;;dont need it much
+;; (global-set-key (kbd "M-H") '+evil/window-move-left)
+;; (global-set-key (kbd "M-L") '+evil/window-move-right)
+;; (global-set-key (kbd "M-K") '+evil/window-move-up)
+;; (global-set-key (kbd "M-J") '+evil/window-move-down)
+(tab-bar-mode)
+(setq tab-bar-show 1)
+(define-key evil-normal-state-map (kbd "M-H") 'tab-bar-switch-to-next-tab)
+(define-key evil-normal-state-map (kbd "M-L") 'tab-bar-switch-to-prev-tab)
+(define-key evil-insert-state-map (kbd "M-H") 'tab-bar-switch-to-next-tab)
+(define-key evil-insert-state-map (kbd "M-L") 'tab-bar-switch-to-prev-tab)
 
 (define-key evil-normal-state-map (kbd "L") 'next-buffer)
 (define-key evil-normal-state-map (kbd "H") 'previous-buffer)
@@ -155,18 +163,27 @@
 (define-key evil-insert-state-map (kbd "k") 'my-kj)
 
 
-;; always keep minimap-mode on
-;; (minimap-mode t)
+;; never ask for closing emacs
+(setq confirm-kill-emacs nil)
 
+;; to avoid the which key being covered by status line
+(setq which-key-allow-imprecise-window-fit nil)
+
+
+
+;; if want to disable auto-completion
+;; (after! company
+;;   (setq company-idle-delay nil))
 
 ;; company settings
 (setq company-idle-delay 0.1
       ;; company-tooltip-idle-delay 0
-      ;; company-tooltip-maximum-width 80
+      company-tooltip-maximum-width 100
       company-minimum-prefix-length 1
+      company-box-doc-delay 0.1
       ;; company-require-match nil
       ;; company-tooltip-align-annotations t
-      ;; company-tooltip-flip-when-above t
+       ;; company-tooltip-flip-when-above t
       company-show-numbers t
       company-frontends
       '(company-pseudo-tooltip-frontend
@@ -174,7 +191,7 @@
         company-echo-metadata-frontend))
 
 ;; (company-quickhelp-mode)
-;; (setq company-quickhelp-delay 0)
+;; (setq company-quickhelp-delay 0.1)
 
 ;; (use-package lsp-ui)
 ;;   (setq lsp-ui-doc-enable t)
@@ -185,43 +202,56 @@
         (setq lsp-ui-doc-enable t)
         (setq lsp-ui-doc-show-with-mouse t)
        (setq lsp-ui-doc-max-height 100)
-        (setq lsp-ui-doc-max-width 200))
+        (setq lsp-ui-doc-max-width 200)
+        (setq lsp-ui-sideline-enable t)
+        (setq lsp-ui-sideline-show-code-actions t))
 
 (setq lsp-modeline-code-actions-mode t)
-;; (after! lsp-mode
-;; (add-hook 'after-init-hook 'company-tng-mode)) ;; it was activated properly but then the snippets were not working
+(setq lsp-completion-show-detail nil)
 
 
-;; (setq lsp-ui-sideline-show-diagnostics t
-;;       ;; lsp-ui-sideline-show-hover t
-;;       ;; lsp-ui-sideline-update-mode t
-;;       ;; lsp-ui-sideline-delay 0
-;;       lsp-ui-doc-enable t
-;;       lsp-ui-doc-position 'bottom)
 
-;; if want to disable auto-completion
-;; (after! company
-;;   (setq company-idle-delay nil))
+;; (defun my/company-show-doc-buffer ()
+;;   "Temporarily show the documentation buffer for the selection."
+;;   (interactive)
+;;   (let* ((selected (nth company-selection company-candidates))
+;;          (doc-buffer (or (company-call-backend 'doc-buffer selected)
+;;                          (error "No documentation available"))))
+;;     (with-current-buffer doc-buffer
+;;       (goto-char (point-min)))
+;;     (select-window (display-buffer doc-buffer t))))
 
-;; never ask for closing emacs
-(setq confirm-kill-emacs nil)
+;; (defun my/company-show-doc-buffer ()
+;;   "Temporarily show the documentation buffer for the selection."
+;;   (interactive)
+;;   (let* ((selected (nth company-selection company-candidates))
+;;          (doc-buffer (or (company-call-backend 'doc-buffer selected)
+;;                          (error "No documentation available"))))
+;;     (with-current-buffer doc-buffer
+;;       (goto-char (point-min)))
+;;        ;; (local-set-key (kbd "q") 'kill-buffer-and-window)
+;;        ;; (not-modified)
+;;        ;; (read-only-mode))
+;;      (pop-to-buffer doc-buffer '((display-buffer-below-selected)
+;;                                (window-parameters . ((no-other-window . nil)))
+;;                                (window-height . fit-window-to-buffer)))))
 
-;; to avoid the which key being covered by status line
-(setq which-key-allow-imprecise-window-fit nil)
 
+;; currently this works perfectly fine but cannot change its mode 
 (defun my/company-show-doc-buffer ()
   "Temporarily show the documentation buffer for the selection."
   (interactive)
-  (let* ((selected (nth company-selection company-candidates))
-         (doc-buffer (or (company-call-backend 'doc-buffer selected)
+  (let* ((myselected (nth company-selection company-candidates))
+         (my-doc-buffer (or (company-call-backend 'doc-buffer myselected)
                          (error "No documentation available"))))
-    (with-current-buffer doc-buffer
+    (with-current-buffer my-doc-buffer
       (goto-char (point-min)))
-    (display-buffer doc-buffer t)))
+     (pop-to-buffer my-doc-buffer '((display-buffer-below-selected)
+                               (window-parameters . ((no-other-window . nil)))
+                               (window-height . 200)))))
 
 ;; it will open the doc buffer permenantly and we have to close it manually
-;; (define-key evil-insert-state-map (kbd "C-o") #'my/company-show-doc-buffer)
-;; (define-key evil-insert-state-map (kbd "C-o") evil-emacs-state)
+(define-key evil-insert-state-map (kbd "C-o") #'my/company-show-doc-buffer)
 
 
 ;; setting compnay backends
@@ -257,6 +287,7 @@
 ;; (setq-hook! 'c-mode-hook +lsp-company-backends '(company-yasnippet company-capf company-dabbrev company-dabbrev-code company-files))
 ;; (setq-hook! 'rjsx-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
 ;; (setq-hook! 'rustic-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
+
 (setq-hook! 'css-mode +lsp-company-backends '(company-css))
 (after! css (set-company-backend! 'css-mode 'company-css 'company-capf 'company-files 'company-dabbrev 'company-yasnippet))
 
@@ -266,12 +297,7 @@
 (define-key evil-insert-state-map (kbd "M-/") #'company-dabbrev)
 
 
-;; (after! lsp 
-;;         (setq centaur-tabs-mode nil))
 ;; (add-hook 'vterm-mode-hook (lambda () (setq evil-default-state 'emacs)))
-;; (after! company-mode
-;; (define-key company-active-map (kbd "<tab>") #'company-complete))
-;; (define-key company-active-map (kbd "Retn") 'nill)
 
 ;; trying to fix vterm this currently works fine
 (add-hook 'vterm-mode-hook 'evil-emacs-state)
@@ -280,6 +306,8 @@
 (after! vterm
 (define-key vterm-mode-map (kbd "M-k") 'evil-window-up)
 (define-key vterm-mode-map (kbd "M-j") 'evil-window-down)
+(define-key vterm-mode-map (kbd "M-H") 'previous-buffer)
+(define-key vterm-mode-map (kbd "M-L") 'next-buffer)
 (define-key vterm-mode-map (kbd "M-l") 'evil-window-right)
 (define-key vterm-mode-map (kbd "M-h") 'evil-window-left))
 
@@ -304,9 +332,6 @@
 ;; (setq projectile-project-search-path '("/anand/Projects/" "/anand/Projects/others"))
 (setq projectile-auto-discover t)
 ;; (setq projectile-project-root '~/Projects')
-
-;; (after! projectile 
-;;     (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up)))
 
 
 (define-key evil-insert-state-map (kbd "M-k") 'evil-window-up)
@@ -333,14 +358,6 @@
     (setq-local company-idle-delay nil)))
 (add-hook 'org-mode-hook #'jpk/company-idle-delay-nil-org )
 
-;; (defun jpk/css-company-mode ()
-;;   (when (eq major-mode 'css-mode)
-;;     (setq company-idle-delay nil)))
-;; (add-hook 'org-mode-hook #'jpk/company-idle-delay-nil-org )
-
-;; (autoload 'css-mode "css-mode")
-;; (setq auto-mode-alist       
-;;      (cons '("\\.css\\'" . css-mode) auto-mode-alist))
 
 ;; to increase speed
 ;;; add to $DOOMDIR/config.el
@@ -349,9 +366,6 @@
 (advice-add #'+javascript-add-npm-path-h :override #'ignore)
 
 
-
-;; (global-set-key (kbd "") #'imenu-list-smart-toggle)
-
 (map! :leader 
       :desc "toggling imenu-list"
       "tt" #'imenu-list-smart-toggle)
@@ -359,7 +373,7 @@
 
 
 
-;; setting up fzf keybinds
+;;setting up fzf keybinds
 (map! :leader
       (:prefix ("e" . "fzf")
        :desc "fzf_projectile"      "a" #'fzf-projectile
@@ -367,7 +381,7 @@
        :desc "fzf_find_file"        "f" #'fzf-find-file
        :desc "fzf"                  "e" #'fzf
        :desc "fzf_directory"         "d" #'fzf-directory
-       :desc "fzf_grep_in_dir_with_narrwing"      "g" #'fzf-grep-in-dir-with-narrwing
+       :desc "fzf_grep_in_dir_with_narrwing"   "D" #'fzf-grep-in-dir-with-narrwing
        :desc "fzf_grep_in_dir"         "G" #'fzf-grep-in-dir
        :desc "fzf_find_in_buffer"         "b" #'fzf-find-in-buffer
        :desc "fzf_git_grep"         "B" #'fzf_git_grep))
@@ -384,20 +398,6 @@
 
         ;; (setq auto-revert-use-notify t)
         ;; (setq global-auto-revert-mode t)
-
-;; (use-package! autorevert
-;;   ;; revert buffers when their files/state have changed
-;;   :hook (focus-in . doom-auto-revert-buffers-h)
-;;   :hook (after-save . doom-auto-revert-buffers-h)
-;;   :hook (doom-switch-buffer . doom-auto-revert-buffer-h)
-;;   :hook (doom-switch-window . doom-auto-revert-buffer-h)
-;;   :config
-;;   (setq auto-revert-verbose t ; let us know when it happens
-;;         ;; auto-revert-use-notify nil
-;;         auto-revert-use-notify t
-;;         auto-revert-stop-on-user-input nil
-;;         ;; Only prompts for confirmation when buffer is unsaved.
-;;         revert-without-query (list ".")))
 
 (after! autorevert
       (setq auto-revert-use-notify t)
@@ -444,3 +444,229 @@
 
 (add-hook 'python-mode-hook '(lambda () 
                               (local-set-key (kbd "<f9>") 'execute-python-program)))
+
+
+
+;; (setq fzf/directory-start "/home/swaroop/")
+
+;; consult stuff
+(defun consult-find-dir-from-home ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find /home/swaroop/ -type d")
+  (consult-find))
+
+(defun consult-find-everything-from-home ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find /home/swaroop/")
+  (consult-find))
+
+
+(defun consult-find-everything-form-curdir ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find .")
+  (consult-find))
+
+(defun consult-find-dir-in-cur ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find . -type d")
+  (consult-find))
+
+(defun consult-find-everything-normal-curdir ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find . -not ( -wholename */.* -prune )")
+  (consult-find))
+
+(defun consult-find-directory-normal-curdir ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find . -not ( -wholename */.* -prune ) -type d")
+  (consult-find))
+
+(defun consult-find-everything-normal-home ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find /home/swaroop/ -not ( -wholename */.* -prune )")
+  (consult-find))
+
+(defun consult-find-directory-normal-home ()
+  "Search for regexp with find only DIR in DIR with INITIAL input."
+  (interactive)
+  (setq consult-find-args "find /home/swaroop/ -not ( -wholename */.* -prune ) -type d")
+  (consult-find))
+
+(setq consult-ripgrep-args "rg --null --line-buffered --color=never --max-columns=1000 --path-separator /   --smart-case --no-heading --with-filename --line-number --search-zip --hidden")
+;; consult keybinds
+(map! :leader
+      (:prefix ("k" . "consult")
+
+       :desc "consult_grep"        "g" #'consult-grep
+       :desc "consult_ripgrep"        "r" #'consult-ripgrep
+       :desc "consult_find_every_~"        "f" #'consult-find-everything-from-home
+       :desc "consult_find_every_."          "e" #'consult-find-everything-form-curdir
+       :desc "consult_dir_~"         "d" #'consult-find-dir-from-home
+       :desc "consult_dir_."         "D" #'consult-find-dir-in-cur
+       :desc "consult_line"         "l" #'consult-line
+       :desc "consult_line_multi"         "L" #'consult-line-multi
+       :desc "consult_project_buffer"         "b" #'consult-project-buffer
+       :desc "consult_normal_every_."         "k" #'consult-find-everything-normal-curdir
+       :desc "consult_normal_dir_."         "K" #'consult-find-directory-normal-curdir
+       :desc "consult_normal_every_~"        "j" #'consult-find-everything-normal-home
+       :desc "consult_normal_dir_~"          "J" #'consult-find-directory-normal-home))
+
+
+
+
+(after! eshell
+  ;; FIXME: Path-completion, for example with "ls", is disabled until
+  ;; `eshell-cmpl-initialize' is called.
+  (add-hook! eshell-mode :append #'eshell-cmpl-initialize)
+  ;; For some reason, the first `add-hook!' adds
+  ;; `eshell-cmpl-initialize' to the beginning, even with `:append'.
+  ;; Remove it and add it again to truly append it.
+  ;; (When it is at the beginning, it fails to enable completions.)
+  (remove-hook! eshell-mode #'eshell-cmpl-initialize)
+  (add-hook! eshell-mode :append #'eshell-cmpl-initialize)
+
+  ;; Make sure the hooks were run.
+  (add-hook! eshell-mode :append
+    (defun my-post-eshell-mode-hook-h ()
+      (message "Ran hooks in `eshell-mode-hook'."))))
+  
+
+(setq desktop+-base-dir "/home/swaroop/.config/doom/desktops/")
+
+
+(map! :leader 
+      :desc "create-new-desktop" "qj" #'desktop+-create
+      :desc "load-desktop" "qk" #'desktop+-load
+      :desc "create new tab" "qn" #'tab-bar-new-tab
+      :desc "close new tab" "qc" #'tab-bar-close-tab
+      :desc "switch to tab" "qm" #'tab-bar-switch-to-tab)
+
+
+
+(set-popup-rules!
+ '(("^ \\*" :slot -1) ; fallback rule for special buffers
+   ("^ \\*" :slot -1) 
+   ("^\\*" :height 0.32)
+   ;; ("^\\*elgot" :height 0.52)
+   ;; ("^\\*company" :height 0.52)
+   ("^\\*Completions" :slot -1 :ttl 0)
+   ("^\\*\\(?:scratch\\|Messages\\)" :ttl t)
+   ("^\\*Help" :slot -1 :size 0.2 :select t)
+   ("^\\*doom:"
+    :size 0.35 :select t :modeline t :quit t :ttl t)))
+
+
+
+;; frog mode
+(define-key evil-normal-state-map (kbd "C-a") 'frog-jump-buffer)
+(define-key evil-insert-state-map (kbd "C-a") 'frog-jump-buffer)
+
+;; (add-hook 'eshell-mode-hook
+;;           (lambda ()
+;;             (define-key eshell-mode-map (kbd "C-a") #'frog-jump-buffer)))
+
+(setq frog-jump-buffer-include-current-buffer nil)
+(after! frog-jump-buffer
+(dolist (regexp '("TAGS" "^\\*Compile-log" "-debug\\*$" "^\\:" "errors\\*$" "^\\*Backtrace" "-ls\\*$" "^\\*doom*" "^\\*scratch" "^\\*Messages" "^\\*Async-native-compile-log" "^\\*lsp-documentaion"
+                  "stderr\\*$" "^\\*Flymake" "^\\*vc" "^\\*Warnings" "^\\*eldoc" "^\\*lsp-log" "^\\*clangd" "^\\*Native-compile-log" "^\\async-native-compile-log" "^\\*helpful"))
+    (push regexp frog-jump-buffer-ignore-buffers)))
+
+(setq frog-jump-buffer-default-filter 'frog-jump-buffer-filter-same-project)
+
+(defface frog-menu-posframe-background-face
+  '((t (:inherit default)))
+  "Face used for the background color of the posframe.")
+
+
+(defface frog-menu-action-keybinding-face
+  '((t (:foreground "#ffffff")))
+  "Face used for menu action keybindings.")
+
+(defcustom frog-menu-posframe-border-width 3
+  "Border width to use for the posframe `frog-menu' creates."
+  :type 'integer)
+
+(defun frog-jump-buffer-filter-special-buffers (buffer)
+  (with-current-buffer buffer
+    (-any? #'derived-mode-p '(eshell-mode))))
+
+(setq frog-jump-buffer-filter-actions
+ '(("e" "[special]" frog-jump-buffer-filter-special-buffers)))
+;; (setq frog-jump-buffer-sort '(lambda (one two) t)) ;; don't know what it does
+
+
+
+(defun my-vertico-select (index)
+  (interactive)
+  (vertico-next (if (string= vertico-preselect 'prompt) (+ index 1) index)) ;; If `vertico-preselect' is `first' or `prompt', it's mostly working but when `directory' the default value, is described as "Like first, but select the prompt if it is a directory", so the condition switch (the first list item is directory or not) is needed.
+  (vertico-exit))
+
+(after! vertico
+(vertico-indexed-mode)
+(setq vertico-indexed-start 1))
+;;keybindings are one shifted because index starts from 0
+(define-key minibuffer-local-map (kbd "M-1") (lambda () (interactive) (my-vertico-select 0)))
+(define-key minibuffer-local-map (kbd "M-2") (lambda () (interactive) (my-vertico-select 1)))
+(define-key minibuffer-local-map (kbd "M-3") (lambda () (interactive) (my-vertico-select 2)))
+(define-key minibuffer-local-map (kbd "M-4") (lambda () (interactive) (my-vertico-select 3)))
+(define-key minibuffer-local-map (kbd "M-5") (lambda () (interactive) (my-vertico-select 4)))
+(define-key minibuffer-local-map (kbd "M-6") (lambda () (interactive) (my-vertico-select 5)))
+(define-key minibuffer-local-map (kbd "M-7") (lambda () (interactive) (my-vertico-select 6)))
+(define-key minibuffer-local-map (kbd "M-8") (lambda () (interactive) (my-vertico-select 7)))
+(define-key minibuffer-local-map (kbd "M-9") (lambda () (interactive) (my-vertico-select 8)))
+(define-key minibuffer-local-map (kbd "M-0") (lambda () (interactive) (my-vertico-select 9)))
+
+
+(global-set-key (kbd "M-,") #'+vertico/switch-workspace-buffer)
+
+;;Tab bar integration
+(with-eval-after-load 'tab-bar
+  ;; Save the current workspace's tab bar data.
+  (add-hook 'persp-before-deactivate-functions
+            (lambda (_)
+              (set-persp-parameter 'tab-bar-tabs (tab-bar-tabs))
+              (set-persp-parameter 'tab-bar-closed-tabs tab-bar-closed-tabs)))
+  ;; Restores the tab bar data of the workspace we have just switched to.
+  (add-hook 'persp-activated-functions
+            (lambda (_)
+              (tab-bar-tabs-set (persp-parameter 'tab-bar-tabs))
+              (setq tab-bar-closed-tabs (persp-parameter 'tab-bar-closed-tabs))
+              (tab-bar--update-tab-bar-lines t)))
+
+)
+
+ ;; Filter frame parameters
+  (setq +persp-filter-parameters-on-save
+        '((tab-bar-tabs . (lambda (conf) (frameset-filter-tabs conf nil nil t)))
+          (winner-ring . ignore)))
+
+(add-hook 'persp-before-save-state-to-file-functions
+              (defun +workspaces-save-tab-bar-data-to-file-h (&rest _)
+                (when (get-current-persp)
+                  (set-persp-parameter 'tab-bar-tabs (frameset-filter-tabs (tab-bar-tabs) nil nil t)))))
+
+(custom-set-faces!
+  ;; '(default :background "#000000")
+  ;; `(bg :background "#000000")
+  ;; `(bg-alt :background "#000000")
+  ;; `(tab-bar :background ,(doom-color 'bg-alt))
+  ;; `(tab-bar :background "#000000")
+  `(cursor :background "#F92660")
+  `(frog-menu-posframe-background-face :background "#000000")
+  `(tab-bar-tab :foreground "#FFFFFF")
+  `(tab-bar-tab-inactive :foreground "#a6adc8")
+  `(font-lock-preprocessor-face :foreground "#f7768e"))
+   
+;; On doom emacs
+
+;; You can use this hydra menu that have all the commands
+(map! :n "C-SPC" 'harpoon-quick-menu-hydra)
+;; (map! :n "C-s" 'harpoon-add-file) ;; no need for this now
+

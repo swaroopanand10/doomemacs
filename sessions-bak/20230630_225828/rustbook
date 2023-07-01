@@ -1,0 +1,57 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "#1"
+   ((def-buffer "doc.org<2>" "/home/swaroop/Projects/rustbook/doc.org" org-mode)
+    (def-eshell-buffer "*eshell*"
+      ((major-mode . eshell-mode)
+       (default-directory . "/home/swaroop/Projects/rustbook/variables/src/")))
+    (def-buffer "main.rs" "/home/swaroop/Projects/rustbook/variables/src/main.rs" rustic-mode))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 10)
+       (min-height-ignore . 4)
+       (min-width-ignore . 4)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 110)
+       (min-pixel-height-ignore . 92)
+       (min-pixel-width-ignore . 44)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1894)
+      (pixel-height . 990)
+      (total-width . 172)
+      (total-height . 43)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                  (0 5 .
+                                     [("/home/swaroop/Projects/rustbook/variables/src/main.rs" 2 "fm0dhc")
+                                      ("*new*" 1 "jmqwt9")
+                                      ("/home/swaroop/Projects/rustbook/variables/src/main.rs" 2 "t6bhp9")
+                                      ("/home/swaroop/Projects/rustbook/doc.org" 567 "eafeni")
+                                      ("/home/swaroop/Projects/rustbook/variables/src/main.rs" 2 "jvvn3s")
+                                      nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                  -1)))
+      (buffer "main.rs"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 8 8 t nil)
+              (margins nil)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 126)
+              (start . 1))
+      (next-buffers "doc.org<2>")
+      (prev-buffers
+       ("doc.org<2>" 1 650)
+       ("main.rs" 1 2)
+       ("*eshell*" 1 66)
+       ("*new*" 1 1)
+       ("*doom*" 1 1540))))
+   (def-params
+     ((last-project-root . "/home/swaroop/Projects/rustbook/")))
+   nil nil nil))

@@ -55,15 +55,21 @@
 (package! fzf)
 ;; (package! corfu)
 ;; (package! kind-icon)
-;; (package! company :disable t)
-;; (package! vertico :disable t)
-;; (package! ivy :disable t)
-
-;; (when (featurep! +orderless)
-;;   (package! orderless))
 
 ;; (package! company-quickhelp)
 ;; (package! pos-tip)
-;; (package! lsp-ui)
 (package! peep-dired)
 (package! imenu-list)
+(package! desktop-plus)
+;; (package! consult-project-extra)
+(package! frog-jump-buffer)
+
+(package! avy)
+(package! posframe) 
+;; (package! tabspaces)
+;; (package! lamda-themes
+;;   :recipe (:host github :repo "lambda-emacs/lambda-themes"))
+(package! harpoon)
+(package! icicles)
+(package! timu-caribbean-theme)
+(package! abyss-theme)
