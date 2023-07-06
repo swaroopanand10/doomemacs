@@ -12,4 +12,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "#F92660"))))
+ '(font-lock-preprocessor-face ((t (:foreground "#f7768e"))))
+ '(frog-menu-posframe-background-face ((t (:background "#000000"))))
+ '(highlight-indent-guides-character-face ((t (:foreground "#199919991999"))))
+ '(highlight-indent-guides-even-face ((t (:background " #866BBB"))))
+ '(hightlight-indent-guides-character-face ((t (:background "#866BBB"))))
+ '(hightlight-indent-guides-even-face ((t (:background "#866BBB"))))
+ '(hightlight-indent-guides-odd-face ((t (:background "#866BBB"))))
+ '(hl-line ((t (:background "#13141c"))))
+ '(tab-bar-tab ((t (:foreground "#FFFFFF"))))
+ '(tab-bar-tab-inactive ((t (:foreground "#a6adc8"))))
  '(ts-fold-replacement-face ((t (:foreground unspecified :box nil :inherit font-lock-comment-face :weight light)))))

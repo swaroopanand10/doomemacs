@@ -103,11 +103,6 @@
 (global-set-key (kbd "M-k") 'evil-window-up)
 (global-set-key (kbd "M-j") 'evil-window-down)
 
-(define-key evil-insert-state-map (kbd "M-k") 'evil-window-up)
-(define-key evil-insert-state-map (kbd "M-j") 'evil-window-down)
-(define-key evil-insert-state-map (kbd "M-l") 'evil-window-right)
-(define-key evil-insert-state-map (kbd "M-h") 'evil-window-left)
-
 (global-set-key (kbd "M-q") '+eshell/toggle) ;; setting this as this is very quick
 (global-set-key (kbd "M-w") '+vterm/toggle) ;; setting this as this is very quick
 
@@ -214,8 +209,8 @@
         (setq lsp-ui-sideline-enable t)
         (setq lsp-ui-sideline-show-code-actions t))
 
-;; (setq lsp-modeline-code-actions-mode t)
-;; (setq lsp-completion-show-detail nil)
+(setq lsp-modeline-code-actions-mode t)
+(setq lsp-completion-show-detail nil)
 
 
 
@@ -296,8 +291,8 @@
 ;; (setq-hook! 'rjsx-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
 ;; (setq-hook! 'rustic-mode-hook +lsp-company-backends '(company-capf company-yasnippet company-dabbrev company-dabbrev-code company-files))
 
-;; (setq-hook! 'css-mode +lsp-company-backends '(company-css))
-;; (after! css (set-company-backend! 'css-mode 'company-css 'company-capf 'company-files 'company-dabbrev 'company-yasnippet))
+(setq-hook! 'css-mode +lsp-company-backends '(company-css))
+(after! css (set-company-backend! 'css-mode 'company-css 'company-capf 'company-files 'company-dabbrev 'company-yasnippet))
 
 (global-set-key (kbd "M-o") 'dabbrev-completion) ;; this is better as it gives choice
 (define-key evil-insert-state-map (kbd "M-N") #'completion-at-point) 
@@ -315,16 +310,11 @@
 (add-hook 'vterm-mode-hook 'evil-emacs-state)
 (define-key vterm-mode-map (kbd "M-k") 'evil-window-up)
 (define-key vterm-mode-map (kbd "M-j") 'evil-window-down)
-(define-key vterm-mode-map (kbd "M-l") 'evil-window-right)
-(define-key vterm-mode-map (kbd "M-h") 'evil-window-left)
-;; (define-key vterm-mode-map (kbd "C-w k") 'evil-window-up)
-;; (define-key vterm-mode-map (kbd "C-w j") 'evil-window-down)
-;; (define-key vterm-mode-map (kbd "C-w l") 'evil-window-right)
-;; (define-key vterm-mode-map (kbd "C-w h") 'evil-window-left)
 (define-key vterm-mode-map (kbd "M-H") 'previous-buffer)
 (define-key vterm-mode-map (kbd "M-L") 'next-buffer)
+(define-key vterm-mode-map (kbd "M-l") 'evil-window-right)
 (define-key vterm-mode-map (kbd "M-w") '+vterm/toggle) ;; setting this as this is very quick
-)
+(define-key vterm-mode-map (kbd "M-h") 'evil-window-left))
 
 
 
@@ -344,14 +334,17 @@
 ;; (define-key vterm-mode-map (kbd "M-n") 'vterm-send-M-n)
 
 
-;; this is causeing the daemon mode startup page to shift to right
 ;; (setq projectile-project-search-path '(("~/Projects" . 1))) ;; this is not working for some reason
-(setq projectile-project-search-path '("/home/swaroop/Projects/others/" "/home/swaroop/Projects/"))
+(setq projectile-project-search-path '("~/Projects/others/" "~/Projects/"))
 ;; (setq projectile-project-search-path '("/anand/Projects/" "/anand/Projects/others"))
 (setq projectile-auto-discover t)
 ;; (setq projectile-project-root '~/Projects')
 
 
+(define-key evil-insert-state-map (kbd "M-k") 'evil-window-up)
+(define-key evil-insert-state-map (kbd "M-j") 'evil-window-down)
+(define-key evil-insert-state-map (kbd "M-l") 'evil-window-right)
+(define-key evil-insert-state-map (kbd "M-h") 'evil-window-left)
 
 ;; (defun jpk/eshell-mode-hook ()
 ;;   (company-mode -1))
@@ -427,7 +420,7 @@
   (setq foo (concat (save-buffer buffer-file-name) "gcc " (buffer-file-name)" &> ./out.txt&& ./a.out < ./in.txt &> ./out.txt" ))
   (shell-command foo))
 
-(add-hook 'c-mode-hook #'(lambda () 
+(add-hook 'c-mode-hook '(lambda () 
                               (local-set-key (kbd "<f9>") 'execute-c-program)))
 
 
@@ -437,7 +430,7 @@
   (setq foo (concat (save-buffer buffer-file-name) "g++ " (buffer-file-name)" &> ./out.txt && ./a.out < ./in.txt &> ./out.txt" ))
   (shell-command foo))
 
-(add-hook 'c++-mode-hook #'(lambda () 
+(add-hook 'c++-mode-hook '(lambda () 
                               (local-set-key (kbd "<f9>") 'execute-cpp-program)))
 
 (defun execute-node-program ()
@@ -446,7 +439,7 @@
   (setq foo (concat (save-buffer buffer-file-name) "node " (buffer-file-name)" &> ./out.txt" ))
   (shell-command foo))
 
-(add-hook 'rjsx-mode-hook #'(lambda () 
+(add-hook 'rjsx-mode-hook '(lambda () 
                               (local-set-key (kbd "<f9>") 'execute-node-program)))
 
 
@@ -456,7 +449,7 @@
   (setq foo (concat (save-buffer buffer-file-name) "python " (buffer-file-name)" < ./in.txt &> ./out.txt" ))
   (shell-command foo))
 
-(add-hook 'python-mode-hook #'(lambda () 
+(add-hook 'python-mode-hook '(lambda () 
                               (local-set-key (kbd "<f9>") 'execute-python-program)))
 
 
@@ -589,7 +582,7 @@
 (setq frog-jump-buffer-include-current-buffer nil)
 (after! frog-jump-buffer
 (dolist (regexp '("TAGS" "^\\*Compile-log" "-debug\\*$" "^\\:" "errors\\*$" "^\\*Backtrace" "-ls\\*$" "^\\*doom*" "^\\*scratch" "^\\*Messages" "^\\*Async-native-compile-log" "^\\*lsp-documentation"
-                  "stderr\\*$" "^\\*Flymake" "^\\*vc" "^\\*Warnings" "^\\*eldoc" "^\\*lsp-log" "^\\*clangd" "^\\*Native-compile-log" "^\\async-native-compile-log" "^\\*helpful" "^\\*company"))
+                  "stderr\\*$" "^\\*Flymake" "^\\*vc" "^\\*Warnings" "^\\*eldoc" "^\\*lsp-log" "^\\*clangd" "^\\*Native-compile-log" "^\\async-native-compile-log" "^\\*helpful", "^\\*company"))
     (push regexp frog-jump-buffer-ignore-buffers)))
 
 (setq frog-jump-buffer-default-filter 'frog-jump-buffer-filter-same-project)
