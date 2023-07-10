@@ -1,0 +1,170 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "cpp"
+   ((def-buffer "out.txt" "/home/swaroop/prg/cf/out.txt" text-mode)
+    (def-buffer "in.txt" "/home/swaroop/prg/cf/in.txt" text-mode)
+    (def-buffer "cpp.cpp" "/home/swaroop/prg/cf/cpp.cpp" c++-mode))
+   (def-wconf
+     (((min-height . 8)
+       (min-width . 20)
+       (min-height-ignore . 6)
+       (min-width-ignore . 8)
+       (min-height-safe . 2)
+       (min-width-safe . 4)
+       (min-pixel-height . 184)
+       (min-pixel-width . 220)
+       (min-pixel-height-ignore . 138)
+       (min-pixel-width-ignore . 88)
+       (min-pixel-height-safe . 46)
+       (min-pixel-width-safe . 44))
+      hc
+      (pixel-width . 1920)
+      (pixel-height . 1057)
+      (total-width . 175)
+      (total-height . 46)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (combination-limit)
+      (leaf
+       (pixel-width . 1237)
+       (pixel-height . 1057)
+       (total-width . 113)
+       (total-height . 46)
+       (normal-height . 1.0)
+       (normal-width . 0.6442708333333333)
+       (parameters
+        (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                   (0 2 .
+                                      [("/home/swaroop/prg/cf/cpp.cpp" 1 "f4yuqy")
+                                       ("/home/swaroop/prg/cf/cpp.cpp" 325 "nbh2d3")
+                                       nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                   -1)))
+       (buffer "cpp.cpp"
+               (selected . t)
+               (hscroll . 0)
+               (fringes 0 0 nil nil)
+               (margins 1)
+               (scroll-bars nil 0 t nil 0 t nil)
+               (vscroll . 0)
+               (dedicated)
+               (point . 325)
+               (start . 1))
+       (prev-buffers
+        ("in.txt" 1 3)
+        ("cpp.cpp" 1 182)
+        ("*doom*" 1 1537)
+        ("*scratch*" 1 1)))
+      (vc
+       (last . t)
+       (pixel-width . 683)
+       (pixel-height . 1057)
+       (total-width . 62)
+       (total-height . 46)
+       (normal-height . 1.0)
+       (normal-width . 0.35572916666666665)
+       (combination-limit)
+       (leaf
+        (pixel-width . 683)
+        (pixel-height . 529)
+        (total-width . 62)
+        (total-height . 23)
+        (normal-height . 0.5004730368968779)
+        (normal-width . 1.0)
+        (parameters
+         (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                    (0 2 .
+                                       [("/home/swaroop/prg/cf/cpp.cpp" 1 "f4yuqy")
+                                        ("/home/swaroop/prg/cf/in.txt" 1 "0se1z7")
+                                        nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                    -1)))
+        (buffer "in.txt"
+                (selected)
+                (hscroll . 0)
+                (fringes 8 8 t nil)
+                (margins nil)
+                (scroll-bars nil 0 t nil 0 t nil)
+                (vscroll . 0)
+                (dedicated)
+                (point . 3)
+                (start . 1))
+        (prev-buffers
+         ("cpp.cpp" 1 210)))
+       (leaf
+        (last . t)
+        (pixel-width . 683)
+        (pixel-height . 528)
+        (total-width . 62)
+        (total-height . 23)
+        (normal-height . 0.49952696310312206)
+        (normal-width . 1.0)
+        (parameters
+         (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                    (0 2 .
+                                       [("/home/swaroop/prg/cf/cpp.cpp" 1 "f4yuqy")
+                                        ("/home/swaroop/prg/cf/out.txt" 1 "ze09e3")
+                                        nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                    -1)))
+        (buffer "out.txt"
+                (selected)
+                (hscroll . 0)
+                (fringes 8 8 t nil)
+                (margins nil)
+                (scroll-bars nil 0 t nil 0 t nil)
+                (vscroll . 0)
+                (dedicated)
+                (point . 36)
+                (start . 1))
+        (prev-buffers
+         ("cpp.cpp" 1 135))))))
+   (def-params
+     ((eshell-buffers 0 0 .
+                      [nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+      (last-project-root)))
+   nil nil nil)
+ (def-persp "eshell"
+   ((def-eshell-buffer "*eshell*"
+      ((major-mode . eshell-mode)
+       (default-directory . "/home/swaroop/prg/cf/"))))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 10)
+       (min-height-ignore . 2)
+       (min-width-ignore . 3)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 110)
+       (min-pixel-height-ignore . 46)
+       (min-pixel-width-ignore . 33)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1920)
+      (pixel-height . 1057)
+      (total-width . 175)
+      (total-height . 46)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                  (0 0 .
+                                     [nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                  -1)))
+      (buffer "*eshell*"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 0 0 nil nil)
+              (margins 1)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 161)
+              (start . 1))
+      (prev-buffers
+       ("*doom*" 1 1543)
+       ("cpp.cpp" 1 182)
+       ("*scratch*" 1 1))))
+   (def-params
+     ((eshell-buffers 0 0 .
+                      [nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+      (last-project-root)))
+   nil nil nil))

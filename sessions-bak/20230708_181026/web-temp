@@ -1,0 +1,83 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "main"
+   ((def-buffer "out.txt" "/home/swaroop/prg/dev/web/sample/out.txt" text-mode)
+    (def-buffer "index.js" "/home/swaroop/prg/dev/web/sample/index.js" rjsx-mode)
+    (def-buffer "swaroop" "/home/swaroop/" dired-mode))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 20)
+       (min-height-ignore . 3)
+       (min-width-ignore . 8)
+       (min-height-safe . 1)
+       (min-width-safe . 4)
+       (min-pixel-height . 92)
+       (min-pixel-width . 220)
+       (min-pixel-height-ignore . 69)
+       (min-pixel-width-ignore . 88)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 44))
+      hc
+      (pixel-width . 1920)
+      (pixel-height . 1057)
+      (total-width . 175)
+      (total-height . 46)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (combination-limit)
+      (leaf
+       (pixel-width . 960)
+       (pixel-height . 1057)
+       (total-width . 87)
+       (total-height . 46)
+       (normal-height . 1.0)
+       (normal-width . 0.5)
+       (parameters
+        (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                   (0 2 .
+                                      [("/home/swaroop/prg/dev/web/sample/out.txt" 1 "qij9yq")
+                                       ("/home/swaroop/prg/dev/web/sample/index.js" 57 "jwe072")
+                                       nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                   -1)))
+       (buffer "index.js"
+               (selected . t)
+               (hscroll . 0)
+               (fringes 8 8 t nil)
+               (margins nil)
+               (scroll-bars nil 0 t nil 0 t nil)
+               (vscroll . 0)
+               (dedicated)
+               (point . 25)
+               (start . 1))
+       (next-buffers "out.txt")
+       (prev-buffers
+        ("out.txt" 1 1)
+        ("index.js" 1 56)
+        ("swaroop" 1 1327)
+        ("*doom*" 1 1540)
+        ("*scratch*" 1 1)))
+      (leaf
+       (last . t)
+       (pixel-width . 960)
+       (pixel-height . 1057)
+       (total-width . 88)
+       (total-height . 46)
+       (normal-height . 1.0)
+       (normal-width . 0.5)
+       (parameters
+        (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                   (0 1 .
+                                      [("/home/swaroop/prg/dev/web/sample/out.txt" 1 "qij9yq")
+                                       nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                   -1)))
+       (buffer "out.txt"
+               (selected)
+               (hscroll . 0)
+               (fringes 8 8 t nil)
+               (margins nil)
+               (scroll-bars nil 0 t nil 0 t nil)
+               (vscroll . 0)
+               (dedicated)
+               (point . 1)
+               (start . 1)))))
+   (def-params nil)
+   nil nil nil))
